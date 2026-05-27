@@ -3,5 +3,5 @@ export interface Course {
   title: string
   progress: number
   icon_name: string
-  created_at?: string
+  created_at: string
 }

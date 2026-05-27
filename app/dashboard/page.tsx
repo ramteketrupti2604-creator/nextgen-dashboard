@@ -2,7 +2,7 @@ import { supabase } from "@/lib/supabase"
 import Sidebar from "@/components/sidebar/sidebar"
 import MobileNavbar from "@/components/sidebar/mobile-navbar"
 import DashboardContent from "@/components/dashboard/dashboard-content"
-import type { Course } from "@/types/course"
+import type { Course } from "../../types/course"
 
 export default async function DashboardPage() {
   const { data: courses, error } = await supabase

@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import CourseCard from "@/components/dashboard/course-card"
 import HeroTile from "@/components/dashboard/hero-tile"
 import ActivityTile from "@/components/dashboard/activity-tile"
-import type { Course } from "@/types/course"
+import type { Course } from "../../../types/course"
 
 interface DashboardContentProps {
   courses: Course[]
