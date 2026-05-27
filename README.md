@@ -1,11 +1,8 @@
-# README.md
-
-````md
 # 🚀 Next-Gen Learning Dashboard
 
-A futuristic student learning dashboard built with Next.js App Router, Supabase, Tailwind CSS, and Framer Motion.
+A futuristic student learning dashboard built using Next.js App Router, Supabase, Tailwind CSS, and Framer Motion.
 
-This project was developed as part of a frontend intern challenge focused on modern UI architecture, server-rendered data fetching, smooth animations, and responsive Bento Grid layouts.
+This project was developed as part of a Frontend Intern Challenge focused on modern UI architecture, server-rendered data fetching, smooth animations, responsive Bento Grid layouts, and performance-focused frontend engineering.
 
 ---
 
@@ -23,6 +20,9 @@ This project was developed as part of a frontend intern challenge focused on mod
 - ✅ Dark futuristic UI
 - ✅ TypeScript interfaces
 - ✅ Error handling for Supabase fetch failures
+- ✅ Dynamic Lucide React icons
+- ✅ Mobile responsive design
+- ✅ Smooth staggered animations
 
 ---
 
@@ -43,7 +43,8 @@ This project was developed as part of a frontend intern challenge focused on mod
 app/
  ├── dashboard/
  │    ├── page.tsx
- │    └── loading.tsx
+ │    ├── loading.tsx
+ │    ├── error.tsx
  │
  ├── components/
  │    ├── dashboard/
@@ -53,14 +54,15 @@ app/
  │    │     └── course-card.tsx
  │    │
  │    └── sidebar/
- │          └── sidebar.tsx
+ │          ├── sidebar.tsx
+ │          └── mobile-navbar.tsx
  │
  ├── lib/
  │    └── supabase.ts
  │
  └── types/
       └── course.ts
-````
+```
 
 ---
 
@@ -68,15 +70,18 @@ app/
 
 ## Server + Client Component Split
 
-The dashboard follows a hybrid architecture using both:
+The dashboard follows a hybrid architecture using both Server Components and Client Components.
 
-### Server Components
+---
+
+## ✅ Server Components
 
 Used for:
 
-* Secure Supabase data fetching
-* Faster initial render
-* Reduced client bundle size
+- Secure Supabase data fetching
+- Faster initial render
+- Reduced client-side bundle size
+- Better performance and SEO
 
 Example:
 
@@ -88,16 +93,17 @@ This component fetches course data directly from Supabase on the server.
 
 ---
 
-### Client Components
+## ✅ Client Components
 
 Used for:
 
-* Framer Motion animations
-* Hover interactions
-* Layout animations
-* Progress bar animations
+- Framer Motion animations
+- Hover interactions
+- Layout transitions
+- Progress bar animations
+- Sidebar micro-interactions
 
-Example:
+Examples:
 
 ```tsx
 dashboard-content.tsx
@@ -105,13 +111,13 @@ course-card.tsx
 sidebar.tsx
 ```
 
-This split ensures proper Next.js architecture and avoids rendering issues with Framer Motion inside Server Components.
+This separation ensures proper Next.js architecture while avoiding Framer Motion rendering issues inside Server Components.
 
 ---
 
 # 🗄 Supabase Setup
 
-## Table Schema
+## Courses Table Schema
 
 ```sql
 create table courses (
@@ -125,7 +131,7 @@ create table courses (
 
 ---
 
-## Seed Data Example
+## Seed Data
 
 ```sql
 insert into courses (title, progress, icon_name)
@@ -160,30 +166,40 @@ Implemented using Framer Motion.
 
 ## Included Animations
 
-* Staggered Bento Grid entrance
-* Spring hover animations
-* Animated progress bars
-* Sidebar active indicator using `layoutId`
-* Smooth scale + glow hover effects
+- Staggered Bento Grid entrance animations
+- Spring-based hover interactions
+- Animated progress bars
+- Sidebar active indicator using `layoutId`
+- Smooth scale and glow hover effects
+
+---
+
+# 🎨 UI Design
+
+- Dark futuristic theme
+- Bento Grid layout
+- Gradient glow accents
+- Hardware-accelerated animations
+- Minimal and premium SaaS-style design
 
 ---
 
 # 📱 Responsive Design
 
-## Desktop
+## Desktop (>1024px)
 
-* Full sidebar
-* 3-column Bento Grid
+- Full sidebar visible
+- 3-column Bento Grid layout
 
-## Tablet
+## Tablet (768px - 1024px)
 
-* Compact sidebar with icons only
-* 2-column layout
+- Compact sidebar with icons
+- 2-column Bento layout
 
-## Mobile
+## Mobile (<768px)
 
-* Bottom navigation bar
-* Single-column stacked layout
+- Bottom navigation bar
+- Single-column stacked layout
 
 ---
 
@@ -197,9 +213,9 @@ app/dashboard/loading.tsx
 
 Includes:
 
-* Animated skeleton cards
-* Pulsing placeholders
-* Sidebar skeletons
+- Animated skeleton cards
+- Pulsing placeholders
+- Sidebar skeletons
 
 ---
 
@@ -219,11 +235,12 @@ if (error) {
 
 # 🎯 Performance Considerations
 
-* Used only `transform` and `opacity` animations
-* Avoided layout shifts
-* Server-side data fetching
-* Modular reusable components
-* Minimal client-side JavaScript
+- Used only `transform` and `opacity` animations
+- Avoided layout shifts
+- Server-side data fetching
+- Modular reusable components
+- Reduced unnecessary client-side rendering
+- Optimized animation performance using Framer Motion spring physics
 
 ---
 
@@ -232,8 +249,8 @@ if (error) {
 Create a `.env.local` file:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://zphkgcvoidilorsvsjrh.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwaGtnY3ZvaWRpbG9yc3ZzanJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MjcyNDQsImV4cCI6MjA5NTIwMzI0NH0.UOGDWaUs2UxfeWnLwn-Zs7ZhVrvMzY9srpIfN__ubCE
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 ---
@@ -249,42 +266,38 @@ npm run dev
 
 # 🚀 Deployment
 
-Deploy easily using:
+Deployed using:
 
-* Vercel
-* Supabase
+- Vercel
+- Supabase
 
 ---
 
 # 🧩 Challenges Faced
 
-## 1. Framer Motion in Server Components
+## 1. Framer Motion inside Server Components
 
-Initially, Framer Motion caused runtime errors because motion components cannot run inside Server Components.
+Initially encountered rendering issues because motion components cannot run inside Server Components.
 
 ### Solution
 
-Moved animations into separate Client Components.
+Separated animation logic into dedicated Client Components.
 
 ---
 
 ## 2. Supabase RLS Permissions
 
-Encountered:
-
-```bash
-permission denied for table courses
-```
+Encountered database permission issues while fetching course data.
 
 ### Solution
 
-Added RLS policy and granted SELECT access.
+Enabled Row Level Security and added public SELECT policies.
 
 ---
 
 ## 3. Dynamic Icon Rendering
 
-Handled dynamic Lucide icons safely using a typed icon map.
+Handled dynamic Lucide icons safely using a typed icon mapping system.
 
 ---
 
@@ -292,11 +305,12 @@ Handled dynamic Lucide icons safely using a typed icon map.
 
 The final dashboard delivers:
 
-* Modern SaaS-style UI
-* Smooth interactions
-* High-performance animations
-* Secure server-rendered Supabase integration
-* Fully responsive experience
+- Modern SaaS-style UI
+- Smooth user interactions
+- High-performance animations
+- Secure server-rendered Supabase integration
+- Fully responsive experience
+- Modular scalable architecture
 
 ---
 
@@ -304,5 +318,15 @@ The final dashboard delivers:
 
 Built by Trupti Ramteke
 
+---
+
+# 🔗 Submission Links
+
+## GitHub Repository
+
+https://github.com/ramteketrupti2604-creator/nextgen-dashboard
 ```
-```
+
+## Live Deployment
+
+https://nextgen-dashboard-fj5z.vercel.app/dashboard
